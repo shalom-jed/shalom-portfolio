@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-import Image from "next/image";
 import { 
   Github, 
   Mail, 
@@ -10,6 +9,7 @@ import {
   ArrowRight, 
   Code2, 
   Server, 
+  Terminal, 
   Linkedin, 
   Cpu, 
   Globe, 
@@ -30,7 +30,7 @@ export default function Home() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // Helper to pick icons for each project dynamically
+  // Helper to pick the right icon for each project dynamically
   const getProjectIcon = (title: string) => {
     const t = title.toLowerCase();
     if (t.includes('scam') || t.includes('guard')) return <Shield size={64} />;
@@ -64,52 +64,32 @@ export default function Home() {
 
       <main className="font-sans pt-32">
         
-        {/* HERO SECTION WITH PHOTO */}
-        <section className="min-h-[90vh] relative flex items-center px-6 md:px-20 overflow-hidden">
+        {/* Hero Section */}
+        <section className="min-h-[80vh] relative flex items-center px-6 md:px-20 overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-black text-transparent opacity-5 pointer-events-none select-none" style={{ WebkitTextStroke: "2px white" }}>
             SWE
           </div>
-
-          <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            
-            {/* Left Column: Text Content */}
-            <div className="order-2 lg:order-1">
-              <div className="flex items-center gap-3 font-mono text-sm text-[var(--color-accent)] mb-8">
-                <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
-                <span>Software Engineering Student & Developer</span>
-              </div>
-              <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-none mb-8">
-                Shalom <span className="text-[var(--color-accent)]">Jedidiah</span>
-              </h1>
-              <p className="text-gray-400 text-lg md:text-xl max-w-xl leading-relaxed mb-10">
-                Building secure, community-driven systems. Specializing in full-stack development, database management, and creative digital solutions.
-              </p>
-              <div className="flex gap-6">
-                <a href="#projects" className="bg-[var(--color-accent)] hover:bg-blue-800 text-white px-8 py-4 rounded-full font-bold flex items-center gap-3 transition-transform hover:-translate-y-1 cursor-none">
-                  View My Work <ArrowRight size={20} />
-                </a>
-              </div>
+          <div className="relative z-10 max-w-5xl mx-auto w-full">
+            <div className="flex items-center gap-3 font-mono text-sm text-[var(--color-accent)] mb-8">
+              <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
+              <span>Software Engineering Student & Developer</span>
             </div>
-
-            {/* Right Column: Photo with Moody Hover Effect */}
-            <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-              <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-2)] rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-                <div className="relative w-64 h-80 md:w-80 md:h-96 overflow-hidden rounded-2xl border border-[var(--color-border)] bg-surface shadow-2xl">
-                  <Image 
-                    src="/me.png"
-                    alt="Shalom Jedidiah"
-                    fill
-                    className="object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-in-out scale-110 hover:scale-100"
-                    priority
-                  />
-                </div>
-              </div>
+            <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-none mb-8">
+              <span className="block">Shalom</span>
+              <span className="block text-[var(--color-accent)]">Jedidiah</span>
+            </h1>
+            <p className="text-gray-400 text-lg md:text-xl max-w-2xl leading-relaxed mb-10">
+              Building secure, community-driven systems. Specializing in full-stack development, database management, and creative digital solutions.
+            </p>
+            <div className="flex gap-6">
+              <a href="#projects" className="bg-[var(--color-accent)] hover:bg-blue-800 text-white px-8 py-4 rounded-full font-bold flex items-center gap-3 transition-transform hover:-translate-y-1 cursor-none">
+                View My Work <ArrowRight size={20} />
+              </a>
             </div>
           </div>
         </section>
 
-        {/* ABOUT SECTION */}
+        {/* About Section */}
         <section id="about" className="py-20 px-6 md:px-20 max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
@@ -121,7 +101,7 @@ export default function Home() {
                 I'm a second-year Computing undergraduate at NIBM, Colombo. My focus is on transforming complex requirements into functional, secure, and aesthetically pleasing systems.
               </p>
               <p className="text-gray-400 text-lg leading-relaxed mb-6">
-                As a freelance developer and data administrator, I thrive on building technology that genuinely connects and serves communities.
+                Outside of my academic work, I work as a freelance developer and data administrator. As a trilingual communicator and a Youth Leader, I thrive on building technology that genuinely connects and serves communities.
               </p>
             </div>
             
@@ -144,7 +124,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SPLIT TIMELINE SECTION */}
+        {/* Split Timeline Section */}
         <section id="experience" className="py-20 bg-[var(--color-surface)] relative z-10 border-y border-[var(--color-border)]">
           <div className="px-6 md:px-20 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
@@ -164,7 +144,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* DYNAMIC PROJECTS SECTION */}
+        {/* Dynamic Projects Section */}
         <section id="projects" className="py-32 relative z-10">
           <div className="px-6 md:px-20 mb-12 max-w-7xl mx-auto">
             <div className="font-mono text-xs text-[var(--color-accent)] tracking-[0.2em] mb-4 flex items-center gap-4">
@@ -181,8 +161,8 @@ export default function Home() {
                     {getProjectIcon(project.title)}
                   </div>
                 </div>
-                <span className="text-xs font-bold tracking-wider text-[var(--color-accent)] bg-[var(--color-accent)]/10 px-3 py-1 rounded-full mb-4 inline-block uppercase">
-                  {project.tags[0] || "DEVELOPMENT"}
+                <span className="text-xs font-bold tracking-wider text-[var(--color-accent)] bg-[var(--color-accent)]/10 px-3 py-1 rounded-full mb-4 inline-block">
+                  {project.tags[0]?.toUpperCase() || "DEVELOPMENT"}
                 </span>
                 <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
                 <p className="text-gray-400 mb-6 line-clamp-3">{project.description}</p>
@@ -194,7 +174,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CONTACT SECTION */}
+        {/* Contact Section */}
         <section id="contact" className="py-32 bg-[var(--color-surface)] text-center relative z-10 border-t border-[var(--color-border)]">
           <div className="max-w-2xl mx-auto px-6">
             <div className="font-mono text-xs text-[var(--color-accent)] tracking-[0.2em] mb-4 flex items-center justify-center gap-4">
