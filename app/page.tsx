@@ -13,7 +13,8 @@ import {
   Linkedin, 
   Cpu, 
   Globe, 
-  Layout 
+  Layout, 
+  Instagram
 } from "lucide-react";
 import ExperienceTimeline from "./components/ExperienceTimeline";
 import { projects } from "./data/projects";
@@ -190,6 +191,9 @@ export default function Home() {
               </a>
               <a href="https://linkedin.com/in/shalom-jed" target="_blank" className="w-16 h-16 bg-[var(--color-surface-2)] border border-[var(--color-border)] rounded-full flex items-center justify-center text-white hover:bg-[var(--color-accent)] transition-all cursor-none">
                 <Linkedin size={24} />
+              </a>
+              <a href="https://www.instagram.com/shalom.jedidiah?igsh=dGoxYzZ0N2dzeTFu" target="_blank" className="w-16 h-16 bg-[var(--color-surface-2)] border border-[var(--color-border)] rounded-full flex items-center justify-center text-white hover:bg-[var(--color-accent)] transition-all cursor-none">
+                <Instagram size={24} />
               </a>
             </div>
             <p className="text-gray-500 text-sm">Designed & Built by Shalom Jedidiah © 2026</p>
