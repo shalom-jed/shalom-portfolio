@@ -2,7 +2,7 @@
 
 A sleek, responsive personal portfolio website designed to showcase my software engineering projects, experience, and academic journey. Built with a modern "Black and Tech Blue" aesthetic, featuring interactive UI elements and dynamic content rendering.
 
-**[View Live Site](#)** *(https://shalom-jed.github.io/shalom-portfolio/)*
+**[View Live Site:](#)** *https://shalom-jed.github.io/shalom-portfolio/*
 
 ## ✨ Features
 
