@@ -12,7 +12,10 @@ import {
   Linkedin, 
   Cpu, 
   Globe, 
-  Layout 
+  Layout,
+  Menu,
+  X,
+  Instagram
 } from "lucide-react";
 import ExperienceTimeline from "./components/ExperienceTimeline";
 import { projects } from "./data/projects";
@@ -20,6 +23,7 @@ import { projects } from "./data/projects";
 export default function Home() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -48,17 +52,38 @@ export default function Home() {
       <div className="mesh-gradient" />
 
       {/* Navigation Bar */}
-      <header className="fixed top-0 left-0 right-0 z-50 p-6 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-[#222]">
-        <nav className="max-w-7xl mx-auto flex justify-between items-center">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-[#222]">
+        <div className="p-6 max-w-7xl mx-auto flex justify-between items-center">
           <span className="font-mono text-xl font-bold text-[var(--color-accent)]">SJ_</span>
-          <ul className="flex gap-8 text-sm font-medium text-gray-400 hidden md:flex">
+          
+          {/* Desktop Navigation */}
+          <ul className="hidden md:flex gap-8 text-sm font-medium text-gray-400">
             <li><a href="#about" className="hover:text-white transition-colors cursor-none">ABOUT</a></li>
             <li><a href="#experience" className="hover:text-white transition-colors cursor-none">EXPERIENCE</a></li>
             <li><a href="#education" className="hover:text-white transition-colors cursor-none">EDUCATION</a></li>
             <li><a href="#projects" className="hover:text-white transition-colors cursor-none">PROJECTS</a></li>
             <li><a href="#contact" className="hover:text-white transition-colors cursor-none">CONTACT</a></li>
           </ul>
-        </nav>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden text-gray-400 hover:text-white transition-colors cursor-none"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 right-0 bg-[#141414] border-b border-[#222] p-6 flex flex-col gap-6 text-center shadow-2xl">
+            <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400 hover:text-[var(--color-accent)] font-medium tracking-widest cursor-none">ABOUT</a>
+            <a href="#experience" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400 hover:text-[var(--color-accent)] font-medium tracking-widest cursor-none">EXPERIENCE</a>
+            <a href="#education" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400 hover:text-[var(--color-accent)] font-medium tracking-widest cursor-none">EDUCATION</a>
+            <a href="#projects" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400 hover:text-[var(--color-accent)] font-medium tracking-widest cursor-none">PROJECTS</a>
+            <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400 hover:text-[var(--color-accent)] font-medium tracking-widest cursor-none">CONTACT</a>
+          </div>
+        )}
       </header>
 
       <main className="font-sans pt-32">
@@ -101,7 +126,7 @@ export default function Home() {
               </div>
               <h2 className="text-4xl md:text-5xl font-bold mb-8">Bridging Logic & Creativity</h2>
               <p className="text-gray-400 text-lg leading-relaxed mb-6">
-                I am a second-year Computing undergraduate at NIBM, Colombo. My focus is on transforming complex requirements into functional, secure, and aesthetically pleasing systems.
+                I'm a second-year Computing undergraduate at NIBM, Colombo. My focus is on transforming complex requirements into functional, secure, and aesthetically pleasing systems.
               </p>
               <p className="text-gray-400 text-lg leading-relaxed mb-6">
                 As a freelance developer and data administrator, I thrive on building technology that genuinely connects and serves communities.
@@ -183,7 +208,7 @@ export default function Home() {
             <div className="font-mono text-xs text-[var(--color-accent)] tracking-[0.2em] mb-4 flex items-center justify-center gap-4">
               <div className="w-10 h-[1px] bg-[var(--color-accent)]" /> GET IN TOUCH <div className="w-10 h-[1px] bg-[var(--color-accent)]" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Let us Work Together</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Let's Work Together</h2>
             <div className="flex justify-center gap-6 mb-12 mt-10">
               <a href="https://github.com/shalom-jed" target="_blank" className="w-16 h-16 bg-[var(--color-surface-2)] border border-[var(--color-border)] rounded-full flex items-center justify-center text-white hover:bg-[var(--color-accent)] transition-all cursor-none">
                 <Github size={24} />
@@ -193,6 +218,9 @@ export default function Home() {
               </a>
               <a href="https://linkedin.com/in/shalom-jed" target="_blank" className="w-16 h-16 bg-[var(--color-surface-2)] border border-[var(--color-border)] rounded-full flex items-center justify-center text-white hover:bg-[var(--color-accent)] transition-all cursor-none">
                 <Linkedin size={24} />
+              </a>
+              <a href="https://www.instagram.com/shalom.jedidiah?igsh=dGoxYzZ0N2dzeTFu" target="_blank" className="w-16 h-16 bg-[var(--color-surface-2)] border border-[var(--color-border)] rounded-full flex items-center justify-center text-white hover:bg-[var(--color-accent)] transition-all cursor-none">
+                <Instagram size={24} />
               </a>
             </div>
             <p className="text-gray-500 text-sm">Designed & Built by Shalom Jedidiah © 2026</p>
