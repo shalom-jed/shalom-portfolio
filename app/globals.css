@@ -79,3 +79,33 @@
   flex: 0 0 500px;
   scroll-snap-align: start;
 }
+
+/* Horizontal Project Scroll */
+.projects-scroll {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0 1.5rem 2rem; /* Smaller padding for mobile */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.projects-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.project-card {
+  flex: 0 0 85vw; /* Shrinks to fit mobile screens */
+  scroll-snap-align: start;
+}
+
+/* Desktop sizing */
+@media (min-width: 768px) {
+  .projects-scroll {
+    gap: 2rem;
+    padding: 0 3rem 2rem;
+  }
+  .project-card {
+    flex: 0 0 500px; /* Restores your 500px width on PCs */
+  }
+}

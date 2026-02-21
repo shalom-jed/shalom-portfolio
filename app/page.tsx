@@ -9,12 +9,10 @@ import {
   ArrowRight, 
   Code2, 
   Server, 
-  Terminal, 
   Linkedin, 
   Cpu, 
   Globe, 
-  Layout, 
-  Instagram
+  Layout 
 } from "lucide-react";
 import ExperienceTimeline from "./components/ExperienceTimeline";
 import { projects } from "./data/projects";
@@ -31,7 +29,7 @@ export default function Home() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // Helper to pick the right icon for each project dynamically
+  // Helper to pick icons for each project dynamically
   const getProjectIcon = (title: string) => {
     const t = title.toLowerCase();
     if (t.includes('scam') || t.includes('guard')) return <Shield size={64} />;
@@ -65,32 +63,36 @@ export default function Home() {
 
       <main className="font-sans pt-32">
         
-        {/* Hero Section */}
-        <section className="min-h-[80vh] relative flex items-center px-6 md:px-20 overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-black text-transparent opacity-5 pointer-events-none select-none" style={{ WebkitTextStroke: "2px white" }}>
+        {/* TEXT-ONLY RESPONSIVE HERO SECTION */}
+        <section className="min-h-[80vh] md:min-h-[90vh] relative flex items-center px-6 md:px-20 overflow-hidden py-20 md:py-0">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] md:text-[15vw] font-black text-transparent opacity-5 pointer-events-none select-none" style={{ WebkitTextStroke: "2px white" }}>
             SWE
           </div>
-          <div className="relative z-10 max-w-5xl mx-auto w-full">
-            <div className="flex items-center gap-3 font-mono text-sm text-[var(--color-accent)] mb-8">
+
+          <div className="relative z-10 max-w-5xl mx-auto w-full text-center md:text-left flex flex-col items-center md:items-start">
+            <div className="flex items-center gap-3 font-mono text-xs md:text-sm text-[var(--color-accent)] mb-6 md:mb-8">
               <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
               <span>Software Engineering Student & Developer</span>
             </div>
-            <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-none mb-8">
+            
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none mb-6 md:mb-8">
               <span className="block">Shalom</span>
               <span className="block text-[var(--color-accent)]">Jedidiah</span>
             </h1>
-            <p className="text-gray-400 text-lg md:text-xl max-w-2xl leading-relaxed mb-10">
+            
+            <p className="text-gray-400 text-base md:text-xl max-w-2xl leading-relaxed mb-8 md:mb-10 mx-auto md:mx-0">
               Building secure, community-driven systems. Specializing in full-stack development, database management, and creative digital solutions.
             </p>
-            <div className="flex gap-6">
-              <a href="#projects" className="bg-[var(--color-accent)] hover:bg-blue-800 text-white px-8 py-4 rounded-full font-bold flex items-center gap-3 transition-transform hover:-translate-y-1 cursor-none">
-                View My Work <ArrowRight size={20} />
+            
+            <div className="flex gap-4 md:gap-6 justify-center md:justify-start">
+              <a href="#projects" className="bg-[var(--color-accent)] hover:bg-blue-800 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-bold flex items-center gap-3 transition-transform hover:-translate-y-1 cursor-none text-sm md:text-base">
+                View My Work <ArrowRight size={18} />
               </a>
             </div>
           </div>
         </section>
 
-        {/* About Section */}
+        {/* ABOUT SECTION */}
         <section id="about" className="py-20 px-6 md:px-20 max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
@@ -99,10 +101,10 @@ export default function Home() {
               </div>
               <h2 className="text-4xl md:text-5xl font-bold mb-8">Bridging Logic & Creativity</h2>
               <p className="text-gray-400 text-lg leading-relaxed mb-6">
-                I'm a second-year Computing undergraduate at NIBM, Colombo. My focus is on transforming complex requirements into functional, secure, and aesthetically pleasing systems.
+                I am a second-year Computing undergraduate at NIBM, Colombo. My focus is on transforming complex requirements into functional, secure, and aesthetically pleasing systems.
               </p>
               <p className="text-gray-400 text-lg leading-relaxed mb-6">
-                Outside of my academic work, I work as a freelance developer and data administrator. As a trilingual communicator and a Youth Leader, I thrive on building technology that genuinely connects and serves communities.
+                As a freelance developer and data administrator, I thrive on building technology that genuinely connects and serves communities.
               </p>
             </div>
             
@@ -125,7 +127,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Split Timeline Section */}
+        {/* SPLIT TIMELINE SECTION */}
         <section id="experience" className="py-20 bg-[var(--color-surface)] relative z-10 border-y border-[var(--color-border)]">
           <div className="px-6 md:px-20 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
@@ -145,7 +147,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Dynamic Projects Section */}
+        {/* DYNAMIC PROJECTS SECTION */}
         <section id="projects" className="py-32 relative z-10">
           <div className="px-6 md:px-20 mb-12 max-w-7xl mx-auto">
             <div className="font-mono text-xs text-[var(--color-accent)] tracking-[0.2em] mb-4 flex items-center gap-4">
@@ -162,8 +164,8 @@ export default function Home() {
                     {getProjectIcon(project.title)}
                   </div>
                 </div>
-                <span className="text-xs font-bold tracking-wider text-[var(--color-accent)] bg-[var(--color-accent)]/10 px-3 py-1 rounded-full mb-4 inline-block">
-                  {project.tags[0]?.toUpperCase() || "DEVELOPMENT"}
+                <span className="text-xs font-bold tracking-wider text-[var(--color-accent)] bg-[var(--color-accent)]/10 px-3 py-1 rounded-full mb-4 inline-block uppercase">
+                  {project.tags[0] || "DEVELOPMENT"}
                 </span>
                 <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
                 <p className="text-gray-400 mb-6 line-clamp-3">{project.description}</p>
@@ -175,13 +177,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact Section */}
+        {/* CONTACT SECTION */}
         <section id="contact" className="py-32 bg-[var(--color-surface)] text-center relative z-10 border-t border-[var(--color-border)]">
           <div className="max-w-2xl mx-auto px-6">
             <div className="font-mono text-xs text-[var(--color-accent)] tracking-[0.2em] mb-4 flex items-center justify-center gap-4">
               <div className="w-10 h-[1px] bg-[var(--color-accent)]" /> GET IN TOUCH <div className="w-10 h-[1px] bg-[var(--color-accent)]" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Let's Work Together</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Let us Work Together</h2>
             <div className="flex justify-center gap-6 mb-12 mt-10">
               <a href="https://github.com/shalom-jed" target="_blank" className="w-16 h-16 bg-[var(--color-surface-2)] border border-[var(--color-border)] rounded-full flex items-center justify-center text-white hover:bg-[var(--color-accent)] transition-all cursor-none">
                 <Github size={24} />
@@ -191,9 +193,6 @@ export default function Home() {
               </a>
               <a href="https://linkedin.com/in/shalom-jed" target="_blank" className="w-16 h-16 bg-[var(--color-surface-2)] border border-[var(--color-border)] rounded-full flex items-center justify-center text-white hover:bg-[var(--color-accent)] transition-all cursor-none">
                 <Linkedin size={24} />
-              </a>
-              <a href="https://www.instagram.com/shalom.jedidiah?igsh=dGoxYzZ0N2dzeTFu" target="_blank" className="w-16 h-16 bg-[var(--color-surface-2)] border border-[var(--color-border)] rounded-full flex items-center justify-center text-white hover:bg-[var(--color-accent)] transition-all cursor-none">
-                <Instagram size={24} />
               </a>
             </div>
             <p className="text-gray-500 text-sm">Designed & Built by Shalom Jedidiah © 2026</p>
