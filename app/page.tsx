@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image"; // <-- We brought in the heavy artillery
 import { 
   Github, 
   Mail, 
@@ -88,13 +89,27 @@ export default function Home() {
 
       <main className="font-sans pt-32">
         
-        {/* RESPONSIVE HERO SECTION WITH BACKGROUND IMAGE */}
-        <section 
-          className="min-h-[80vh] md:min-h-[90vh] relative flex items-center px-6 md:px-20 overflow-hidden py-20 md:py-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/portfolio-bg.jpg')" }}
-        >
+        {/* RESPONSIVE HERO SECTION WITH NEXT/IMAGE */}
+        <section className="min-h-[80vh] md:min-h-[90vh] relative flex items-center px-6 md:px-20 overflow-hidden py-20 md:py-0">
+          
+          {/* 1. The Image */}
+          <Image 
+            src="/portfolio-bg.jpg" 
+            alt="Hero Background" 
+            fill 
+            priority
+            className="object-cover object-center z-0"
+          />
 
+          {/* 2. Dark moody overlay so you can read the text! */}
+          <div className="absolute inset-0 bg-black/80 z-10"></div>
 
+          {/* 3. SWE Background Text */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] md:text-[15vw] font-black text-transparent opacity-10 pointer-events-none select-none z-10" style={{ WebkitTextStroke: "2px white" }}>
+            SWE
+          </div>
+
+          {/* 4. Foreground Content */}
           <div className="relative z-20 max-w-5xl mx-auto w-full text-center md:text-left flex flex-col items-center md:items-start">
             <div className="flex items-center gap-3 font-mono text-xs md:text-sm text-[var(--color-accent)] mb-6 md:mb-8">
               <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
