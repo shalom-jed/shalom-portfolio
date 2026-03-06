@@ -80,11 +80,11 @@
   scroll-snap-align: start;
 }
 
-/* Horizontal Project Scroll */
+/* Horizontal Project Scroll - Mobile First */
 .projects-scroll {
   display: flex;
   gap: 1.5rem;
-  padding: 0 1.5rem 2rem; /* Smaller padding for mobile */
+  padding: 0 1.5rem 2rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
@@ -95,8 +95,19 @@
 }
 
 .project-card {
-  flex: 0 0 85vw; /* Shrinks to fit mobile screens */
+  flex: 0 0 85vw; 
   scroll-snap-align: start;
+}
+
+/* Desktop sizing */
+@media (min-width: 768px) {
+  .projects-scroll {
+    gap: 2rem;
+    padding: 0 3rem 2rem;
+  }
+  .project-card {
+    flex: 0 0 500px; 
+  }
 }
 
 /* Desktop sizing */
