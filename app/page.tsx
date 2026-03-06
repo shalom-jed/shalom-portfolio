@@ -93,14 +93,7 @@ export default function Home() {
           className="min-h-[80vh] md:min-h-[90vh] relative flex items-center px-6 md:px-20 overflow-hidden py-20 md:py-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('/portfolio-bg.jpg')" }}
         >
-          
-          {/* Dark moody overlay for contrast */}
-          <div className="absolute inset-0 bg-black/80 z-0"></div>
 
-          {/* SWE Background Text */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] md:text-[15vw] font-black text-transparent opacity-10 pointer-events-none select-none z-10" style={{ WebkitTextStroke: "2px white" }}>
-            SWE
-          </div>
 
           <div className="relative z-20 max-w-5xl mx-auto w-full text-center md:text-left flex flex-col items-center md:items-start">
             <div className="flex items-center gap-3 font-mono text-xs md:text-sm text-[var(--color-accent)] mb-6 md:mb-8">
