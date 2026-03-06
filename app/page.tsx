@@ -88,13 +88,18 @@ export default function Home() {
 
       <main className="font-sans pt-32">
         
-        {/* TEXT-ONLY RESPONSIVE HERO SECTION */}
-        <section className="min-h-[80vh] md:min-h-[90vh] relative flex items-center px-6 md:px-20 overflow-hidden py-20 md:py-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] md:text-[15vw] font-black text-transparent opacity-5 pointer-events-none select-none" style={{ WebkitTextStroke: "2px white" }}>
+        {/* RESPONSIVE HERO SECTION WITH BACKGROUND IMAGE */}
+        <section className="min-h-[80vh] md:min-h-[90vh] relative flex items-center px-6 md:px-20 overflow-hidden py-20 md:py-0 bg-[url('/hero-bg.jpg')] bg-cover bg-center bg-no-repeat">
+          
+          {/* Dark moody overlay for contrast */}
+          <div className="absolute inset-0 bg-black/80 z-0"></div>
+
+          {/* SWE Background Text */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] md:text-[15vw] font-black text-transparent opacity-10 pointer-events-none select-none z-10" style={{ WebkitTextStroke: "2px white" }}>
             SWE
           </div>
 
-          <div className="relative z-10 max-w-5xl mx-auto w-full text-center md:text-left flex flex-col items-center md:items-start">
+          <div className="relative z-20 max-w-5xl mx-auto w-full text-center md:text-left flex flex-col items-center md:items-start">
             <div className="flex items-center gap-3 font-mono text-xs md:text-sm text-[var(--color-accent)] mb-6 md:mb-8">
               <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
               <span>Software Engineering Student & Developer</span>
@@ -105,7 +110,7 @@ export default function Home() {
               <span className="block text-[var(--color-accent)]">Jedidiah</span>
             </h1>
             
-            <p className="text-gray-400 text-base md:text-xl max-w-2xl leading-relaxed mb-8 md:mb-10 mx-auto md:mx-0">
+            <p className="text-gray-300 text-base md:text-xl max-w-2xl leading-relaxed mb-8 md:mb-10 mx-auto md:mx-0">
               Building secure, community-driven systems. Specializing in full-stack development, database management, and creative digital solutions.
             </p>
             
