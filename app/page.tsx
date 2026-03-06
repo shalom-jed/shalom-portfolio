@@ -88,8 +88,11 @@ export default function Home() {
 
       <main className="font-sans pt-32">
         
-        {/* RESPONSIVE HERO SECTION WITH BACKGROUND IMAGE */}
-        <section className="min-h-[80vh] md:min-h-[90vh] relative flex items-center px-6 md:px-20 overflow-hidden py-20 md:py-0 bg-[url('/hero-bg.jpg')] bg-cover bg-center bg-no-repeat">
+{/* RESPONSIVE HERO SECTION WITH BACKGROUND IMAGE */}
+        <section 
+          className="min-h-[80vh] md:min-h-[90vh] relative flex items-center px-6 md:px-20 overflow-hidden py-20 md:py-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/portfolio.jpg')" }}
+        >
           
           {/* Dark moody overlay for contrast */}
           <div className="absolute inset-0 bg-black/80 z-0"></div>
