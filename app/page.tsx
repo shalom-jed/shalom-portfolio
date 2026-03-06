@@ -91,7 +91,7 @@ export default function Home() {
 {/* RESPONSIVE HERO SECTION WITH BACKGROUND IMAGE */}
         <section 
           className="min-h-[80vh] md:min-h-[90vh] relative flex items-center px-6 md:px-20 overflow-hidden py-20 md:py-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/portfolio-bg.jpg')" }}
+          style={{ backgroundImage: "url('/public/portfolio-bg.jpg')" }}
         >
           
           {/* Dark moody overlay for contrast */}
