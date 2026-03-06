@@ -94,7 +94,7 @@ export default function Home() {
           
           {/* 1. The Image */}
           <Image 
-            src="/portfolio-bg.jpg" 
+            src="/porrtfolio-bg.jpeg" 
             alt="Hero Background" 
             fill 
             priority
@@ -102,7 +102,7 @@ export default function Home() {
           />
 
           {/* 2. Dark moody overlay so you can read the text! */}
-          <div className="absolute inset-0 bg-black/80 z-10"></div>
+          <div className="absolute inset-0 bg-black/0 z-10"></div>
 
           {/* 3. SWE Background Text */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] md:text-[15vw] font-black text-transparent opacity-10 pointer-events-none select-none z-10" style={{ WebkitTextStroke: "2px white" }}>
