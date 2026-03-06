@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-import Image from "next/image"; // <-- We brought in the heavy artillery
 import { 
   Github, 
   Mail, 
@@ -16,7 +15,9 @@ import {
   Layout,
   Menu,
   X,
-  Instagram
+  Instagram,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import ExperienceTimeline from "./components/ExperienceTimeline";
 import { projects } from "./data/projects";
@@ -26,6 +27,7 @@ export default function Home() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Custom Cursor Tracker
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
@@ -33,6 +35,30 @@ export default function Home() {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
+
+  // Horizontal Scroll Converter for Desktop Mice
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      if (e.deltaY !== 0) {
+        e.preventDefault(); 
+        container.scrollLeft += e.deltaY; 
+      }
+    };
+
+    container.addEventListener("wheel", handleWheel, { passive: false });
+    return () => container.removeEventListener("wheel", handleWheel);
+  }, []);
+
+  // Button Scroll Logic
+  const scrollProjects = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = direction === 'left' ? -400 : 400; 
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
 
   // Helper to pick icons for each project dynamically
   const getProjectIcon = (title: string) => {
@@ -55,7 +81,7 @@ export default function Home() {
       {/* Navigation Bar */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-[#222]">
         <div className="p-6 max-w-7xl mx-auto flex justify-between items-center">
-          <span className="font-mono text-xl font-bold text-[var(--color-accent)]">SJ_</span>
+          <span className="font-mono text-xl font-bold text-[var(--color-accent)]">Portfolio.</span>
           
           {/* Desktop Navigation */}
           <ul className="hidden md:flex gap-8 text-sm font-medium text-gray-400">
@@ -87,33 +113,30 @@ export default function Home() {
         )}
       </header>
 
-      <main className="font-sans pt-32">
+      <main className="font-sans">
         
-        {/* RESPONSIVE HERO SECTION WITH NEXT/IMAGE */}
-        <section className="min-h-[80vh] md:min-h-[90vh] relative flex items-center px-6 md:px-20 overflow-hidden py-20 md:py-0">
+        {/* RESPONSIVE HERO SECTION */}
+        <section className="min-h-[80vh] md:min-h-screen relative flex items-center px-6 md:px-20 overflow-hidden py-20 md:py-0">
           
-          {/* 1. The Image */}
-          <Image 
-            src="/porrtfolio-bg.jpeg" 
-            alt="Hero Background" 
-            fill 
-            priority
-            className="object-cover object-center z-0"
+          {/* Image positioning updated: Focuses on the left 20% of the image on mobile, and center on desktop */}
+          <img 
+            src="/shalom-portfolio/portfolio-bg.jpg" 
+            alt="Portfolio Background" 
+            className="absolute inset-0 w-full h-full object-cover object-[25%_center] md:object-center z-0"
           />
 
-          {/* 2. Dark moody overlay so you can read the text! */}
-          <div className="absolute inset-0 bg-black/0 z-10"></div>
+          <div className="absolute inset-0 bg-black/40 z-10"></div>
 
-          {/* 3. SWE Background Text */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] md:text-[15vw] font-black text-transparent opacity-10 pointer-events-none select-none z-10" style={{ WebkitTextStroke: "2px white" }}>
+          {/* SWE Background Text - LOCKED TO CENTER */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] md:text-[15vw] font-black text-transparent opacity-10 pointer-events-none select-none z-20" style={{ WebkitTextStroke: "2px white" }}>
             SWE
           </div>
 
-          {/* 4. Foreground Content */}
-          <div className="relative z-20 max-w-5xl mx-auto w-full text-center md:text-left flex flex-col items-center md:items-start">
+          {/* Foreground Content - ALIGNED RIGHT GLOBALLY (Mobile & Desktop) */}
+          <div className="relative z-30 max-w-5xl ml-auto w-full text-right flex flex-col items-end mt-16 md:mt-0">
             <div className="flex items-center gap-3 font-mono text-xs md:text-sm text-[var(--color-accent)] mb-6 md:mb-8">
-              <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
               <span>Software Engineering Student & Developer</span>
+              <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
             </div>
             
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none mb-6 md:mb-8">
@@ -121,11 +144,11 @@ export default function Home() {
               <span className="block text-[var(--color-accent)]">Jedidiah</span>
             </h1>
             
-            <p className="text-gray-300 text-base md:text-xl max-w-2xl leading-relaxed mb-8 md:mb-10 mx-auto md:mx-0">
+            <p className="text-gray-300 text-base md:text-xl max-w-2xl leading-relaxed mb-8 md:mb-10 ml-auto mr-0">
               Building secure, community-driven systems. Specializing in full-stack development, database management, and creative digital solutions.
             </p>
             
-            <div className="flex gap-4 md:gap-6 justify-center md:justify-start">
+            <div className="flex gap-4 md:gap-6 justify-end w-full">
               <a href="#projects" className="bg-[var(--color-accent)] hover:bg-blue-800 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-bold flex items-center gap-3 transition-transform hover:-translate-y-1 cursor-none text-sm md:text-base">
                 View My Work <ArrowRight size={18} />
               </a>
@@ -190,6 +213,7 @@ export default function Home() {
 
         {/* DYNAMIC PROJECTS SECTION */}
         <section id="projects" className="py-32 relative z-10">
+          
           <div className="px-6 md:px-20 mb-12 max-w-7xl mx-auto">
             <div className="font-mono text-xs text-[var(--color-accent)] tracking-[0.2em] mb-4 flex items-center gap-4">
               <div className="w-10 h-[1px] bg-[var(--color-accent)]" /> RECENT WORK
@@ -197,24 +221,44 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-bold">Featured Projects</h2>
           </div>
 
-          <div className="projects-scroll" ref={scrollRef}>
-            {projects.map((project) => (
-              <div key={project.id} className="project-card bg-[var(--color-surface-2)] border border-[var(--color-border)] rounded-[30px] p-8 hover:border-[var(--color-accent)]/50 transition-all group">
-                <div className="aspect-[16/10] bg-gradient-to-br from-[var(--color-accent)]/20 to-black rounded-xl mb-8 flex items-center justify-center text-[var(--color-accent)]">
-                  <div className="group-hover:scale-110 transition-transform duration-500">
-                    {getProjectIcon(project.title)}
+          <div className="relative w-full group/carousel">
+            
+            {/* Left Scroll Button */}
+            <button 
+              onClick={() => scrollProjects('left')} 
+              className="absolute left-2 md:left-8 top-[45%] -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full border border-[#222] bg-[#0a0a0a]/90 backdrop-blur-md flex items-center justify-center text-gray-400 hover:text-white hover:border-[var(--color-accent)] hover:bg-[var(--color-accent)]/20 transition-all cursor-none shadow-2xl opacity-0 group-hover/carousel:opacity-100"
+            >
+              <ChevronLeft size={28} />
+            </button>
+
+            <div className="projects-scroll" ref={scrollRef}>
+              {projects.map((project) => (
+                <div key={project.id} className="project-card bg-[var(--color-surface-2)] border border-[var(--color-border)] rounded-[24px] p-6 hover:border-[var(--color-accent)]/50 transition-all group">
+                  <div className="aspect-[16/10] bg-gradient-to-br from-[var(--color-accent)]/20 to-black rounded-xl mb-6 flex items-center justify-center text-[var(--color-accent)]">
+                    <div className="group-hover:scale-110 transition-transform duration-500">
+                      {getProjectIcon(project.title)}
+                    </div>
                   </div>
+                  <span className="text-xs font-bold tracking-wider text-[var(--color-accent)] bg-[var(--color-accent)]/10 px-3 py-1 rounded-full mb-4 inline-block uppercase">
+                    {project.tags[0] || "DEVELOPMENT"}
+                  </span>
+                  <h3 className="text-xl font-bold mb-3">{project.title}</h3>
+                  <p className="text-gray-400 text-sm mb-6 line-clamp-3">{project.description}</p>
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[var(--color-accent)] font-bold cursor-none transition-all hover:gap-3 text-sm">
+                    View Source <ArrowRight size={16} />
+                  </a>
                 </div>
-                <span className="text-xs font-bold tracking-wider text-[var(--color-accent)] bg-[var(--color-accent)]/10 px-3 py-1 rounded-full mb-4 inline-block uppercase">
-                  {project.tags[0] || "DEVELOPMENT"}
-                </span>
-                <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-                <p className="text-gray-400 mb-6 line-clamp-3">{project.description}</p>
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[var(--color-accent)] font-bold cursor-none transition-all hover:gap-3">
-                  View Source <ArrowRight size={16} />
-                </a>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Right Scroll Button */}
+            <button 
+              onClick={() => scrollProjects('right')} 
+              className="absolute right-2 md:right-8 top-[45%] -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full border border-[#222] bg-[#0a0a0a]/90 backdrop-blur-md flex items-center justify-center text-gray-400 hover:text-white hover:border-[var(--color-accent)] hover:bg-[var(--color-accent)]/20 transition-all cursor-none shadow-2xl opacity-0 group-hover/carousel:opacity-100"
+            >
+              <ChevronRight size={28} />
+            </button>
+
           </div>
         </section>
 

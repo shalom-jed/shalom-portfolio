@@ -63,23 +63,6 @@
   50% { background-position: 80% 70%, 20% 30%, 30% 70%; }
 }
 
-/* Horizontal Project Scroll */
-.projects-scroll {
-  display: flex;
-  gap: 2rem;
-  padding: 0 3rem 2rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
-.projects-scroll::-webkit-scrollbar {
-  display: none;
-}
-.project-card {
-  flex: 0 0 500px;
-  scroll-snap-align: start;
-}
-
 /* Horizontal Project Scroll - Mobile First */
 .projects-scroll {
   display: flex;
@@ -106,17 +89,6 @@
     padding: 0 3rem 2rem;
   }
   .project-card {
-    flex: 0 0 500px; 
-  }
-}
-
-/* Desktop sizing */
-@media (min-width: 768px) {
-  .projects-scroll {
-    gap: 2rem;
-    padding: 0 3rem 2rem;
-  }
-  .project-card {
-    flex: 0 0 500px; /* Restores your 500px width on PCs */
+    flex: 0 0 380px; /* Reduced from 500px for a sleeker look */
   }
 }
