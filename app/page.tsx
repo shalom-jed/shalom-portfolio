@@ -172,21 +172,52 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="flex flex-col gap-4">
+<div className="flex flex-col gap-4">
+              
+              {/* Languages */}
               <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full p-4 flex items-center gap-4 hover:border-[var(--color-accent)] transition-all cursor-none">
-                <div className="w-12 h-12 bg-[var(--color-accent)]/10 rounded-full flex items-center justify-center text-[var(--color-accent)]"><Code2 size={24} /></div>
+                <div className="w-12 h-12 bg-[var(--color-accent)]/10 rounded-full flex items-center justify-center text-[var(--color-accent)]">
+                  <Code2 size={24} />
+                </div>
                 <div>
-                  <h4 className="font-bold text-white">Full-Stack Development</h4>
-                  <p className="text-sm text-gray-500">React, Next.js, HTML/CSS/JS</p>
+                  <h4 className="font-bold text-white">Languages</h4>
+                  <p className="text-sm text-gray-500">Java, JavaScript, C, C#, SQL, TypeScript, Python</p>
                 </div>
               </div>
+
+              {/* Web Technologies */}
               <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full p-4 flex items-center gap-4 hover:border-[var(--color-accent)] transition-all cursor-none">
-                <div className="w-12 h-12 bg-[var(--color-accent)]/10 rounded-full flex items-center justify-center text-[var(--color-accent)]"><Database size={24} /></div>
+                <div className="w-12 h-12 bg-[var(--color-accent)]/10 rounded-full flex items-center justify-center text-[var(--color-accent)]">
+                  <Globe size={24} />
+                </div>
                 <div>
-                  <h4 className="font-bold text-white">Systems Engineering</h4>
-                  <p className="text-sm text-gray-500">Java, Python, SQL, DBMS Design</p>
+                  <h4 className="font-bold text-white">Web Technologies</h4>
+                  <p className="text-sm text-gray-500">React, Node.js, Express, HTML5, CSS3, Tailwind CSS</p>
                 </div>
               </div>
+
+              {/* Databases */}
+              <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full p-4 flex items-center gap-4 hover:border-[var(--color-accent)] transition-all cursor-none">
+                <div className="w-12 h-12 bg-[var(--color-accent)]/10 rounded-full flex items-center justify-center text-[var(--color-accent)]">
+                  <Database size={24} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-white">Databases</h4>
+                  <p className="text-sm text-gray-500">MongoDB, MySQL, SQLite, Oracle, Firebase Firestore</p>
+                </div>
+              </div>
+
+              {/* Tools */}
+              <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full p-4 flex items-center gap-4 hover:border-[var(--color-accent)] transition-all cursor-none">
+                <div className="w-12 h-12 bg-[var(--color-accent)]/10 rounded-full flex items-center justify-center text-[var(--color-accent)]">
+                  <Cpu size={24} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-white">Tools</h4>
+                  <p className="text-sm text-gray-500">Git/GitHub, VS Code, IntelliJ IDEA, Android Studio, Firebase Hosting</p>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>
