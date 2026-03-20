@@ -17,7 +17,8 @@ import {
   X,
   Instagram,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  ExternalLink
 } from "lucide-react";
 import ExperienceTimeline from "./components/ExperienceTimeline";
 import { projects } from "./data/projects";
@@ -147,12 +148,29 @@ export default function Home() {
             <p className="text-gray-300 text-base md:text-xl max-w-2xl leading-relaxed mb-8 md:mb-10 ml-auto mr-0">
               Building secure, community-driven systems. Specializing in full-stack development, database management, and creative digital solutions.
             </p>
-            
-            <div className="flex gap-4 md:gap-6 justify-end w-full">
-              <a href="#projects" className="bg-[var(--color-accent)] hover:bg-blue-800 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-bold flex items-center gap-3 transition-transform hover:-translate-y-1 cursor-none text-sm md:text-base">
-                View My Work <ArrowRight size={18} />
-              </a>
-            </div>
+            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-end w-full mt-8">
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-end w-full mt-8">
+  {/* First: View My GitHub */}
+  <a 
+    href="https://github.com/shalom-jed" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="bg-[var(--color-accent)] hover:bg-blue-800 text-white px-8 py-4 rounded-full font-bold flex items-center justify-center gap-3 transition-transform hover:-translate-y-1 cursor-none text-sm md:text-base w-full sm:w-auto"
+  >
+    View My GitHub <Github size={18} />
+  </a>
+
+  {/* Second: View My Work */}
+  <a 
+    href="#projects" 
+    className="bg-[var(--color-accent)] hover:bg-blue-800 text-white px-8 py-4 rounded-full font-bold flex items-center justify-center gap-3 transition-transform hover:-translate-y-1 cursor-none text-sm md:text-base w-full sm:w-auto"
+  >
+    View My Recent Work <ArrowRight size={18} />
+  </a>
+</div>
+
+</div>
           </div>
         </section>
 
@@ -174,49 +192,62 @@ export default function Home() {
             
 <div className="flex flex-col gap-4">
               
-              {/* Languages */}
-              <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full p-4 flex items-center gap-4 hover:border-[var(--color-accent)] transition-all cursor-none">
-                <div className="w-12 h-12 bg-[var(--color-accent)]/10 rounded-full flex items-center justify-center text-[var(--color-accent)]">
-                  <Code2 size={24} />
-                </div>
-                <div>
-                  <h4 className="font-bold text-white">Languages</h4>
-                  <p className="text-sm text-gray-500">Java, JavaScript, C, C#, SQL, TypeScript, Python</p>
-                </div>
-              </div>
+              <div className="flex flex-col gap-4">
+  {/* Languages */}
+  <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full p-4 flex items-center gap-4 hover:border-[var(--color-accent)] transition-all cursor-none group">
+    <div className="w-12 h-12 bg-[var(--color-accent)]/10 rounded-full flex items-center justify-center text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-white transition-colors">
+      <Code2 size={24} />
+    </div>
+    <div>
+      <h4 className="font-bold text-white">Languages</h4>
+      <p className="text-sm text-gray-500">JavaScript, TypeScript, Python, SQL, Java</p>
+    </div>
+  </div>
 
-              {/* Web Technologies */}
-              <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full p-4 flex items-center gap-4 hover:border-[var(--color-accent)] transition-all cursor-none">
-                <div className="w-12 h-12 bg-[var(--color-accent)]/10 rounded-full flex items-center justify-center text-[var(--color-accent)]">
-                  <Globe size={24} />
-                </div>
-                <div>
-                  <h4 className="font-bold text-white">Web Technologies</h4>
-                  <p className="text-sm text-gray-500">React, Node.js, Express, HTML5, CSS3, Tailwind CSS</p>
-                </div>
-              </div>
+  {/* Frontend */}
+  <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full p-4 flex items-center gap-4 hover:border-[var(--color-accent)] transition-all cursor-none group">
+    <div className="w-12 h-12 bg-[var(--color-accent)]/10 rounded-full flex items-center justify-center text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-white transition-colors">
+      <Layout size={24} />
+    </div>
+    <div>
+      <h4 className="font-bold text-white">Frontend</h4>
+      <p className="text-sm text-gray-500">React, Vite, Tailwind CSS, HTML5, CSS3</p>
+    </div>
+  </div>
 
-              {/* Databases */}
-              <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full p-4 flex items-center gap-4 hover:border-[var(--color-accent)] transition-all cursor-none">
-                <div className="w-12 h-12 bg-[var(--color-accent)]/10 rounded-full flex items-center justify-center text-[var(--color-accent)]">
-                  <Database size={24} />
-                </div>
-                <div>
-                  <h4 className="font-bold text-white">Databases</h4>
-                  <p className="text-sm text-gray-500">MongoDB, MySQL, SQLite, Oracle, Firebase Firestore</p>
-                </div>
-              </div>
+  {/* Backend */}
+  <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full p-4 flex items-center gap-4 hover:border-[var(--color-accent)] transition-all cursor-none group">
+    <div className="w-12 h-12 bg-[var(--color-accent)]/10 rounded-full flex items-center justify-center text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-white transition-colors">
+      <Server size={24} />
+    </div>
+    <div>
+      <h4 className="font-bold text-white">Backend</h4>
+      <p className="text-sm text-gray-500">Node.js, Express.js, REST APIs</p>
+    </div>
+  </div>
 
-              {/* Tools */}
-              <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full p-4 flex items-center gap-4 hover:border-[var(--color-accent)] transition-all cursor-none">
-                <div className="w-12 h-12 bg-[var(--color-accent)]/10 rounded-full flex items-center justify-center text-[var(--color-accent)]">
-                  <Cpu size={24} />
-                </div>
-                <div>
-                  <h4 className="font-bold text-white">Tools</h4>
-                  <p className="text-sm text-gray-500">Git/GitHub, VS Code, IntelliJ IDEA, Android Studio, Firebase Hosting</p>
-                </div>
-              </div>
+  {/* Databases */}
+  <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full p-4 flex items-center gap-4 hover:border-[var(--color-accent)] transition-all cursor-none group">
+    <div className="w-12 h-12 bg-[var(--color-accent)]/10 rounded-full flex items-center justify-center text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-white transition-colors">
+      <Database size={24} />
+    </div>
+    <div>
+      <h4 className="font-bold text-white">Databases</h4>
+      <p className="text-sm text-gray-500">PostgreSQL, MongoDB, Firebase</p>
+    </div>
+  </div>
+
+  {/* Tools */}
+  <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full p-4 flex items-center gap-4 hover:border-[var(--color-accent)] transition-all cursor-none group">
+    <div className="w-12 h-12 bg-[var(--color-accent)]/10 rounded-full flex items-center justify-center text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-white transition-colors">
+      <Cpu size={24} />
+    </div>
+    <div>
+      <h4 className="font-bold text-white">Tools</h4>
+      <p className="text-sm text-gray-500">Git/GitHub, Vercel, Render, Supabase, Firebase Hosting</p>
+    </div>
+  </div>
+</div>
 
             </div>
           </div>
